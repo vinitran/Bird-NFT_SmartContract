@@ -9,11 +9,18 @@ const hre = require("hardhat");
 async function main() {
   const Bird = await hre.ethers.getContractFactory("Bird");
   const bird = await Bird.deploy();
-
-  await bird.deployed();
-
+  const Vini = await hre.ethers.getContractFactory("VINI");
+  const vini = await Vini.deploy();
+  const Marketplace = await hre.ethers.getContractFactory("Marketplace");
+  const marketplace = await Marketplace.deploy(bird.address, vini.address);
   console.log(
-    `Bird NDT address :${bird.address}`
+    `Bird NFT address :${bird.address}`
+  );
+  console.log(
+    `Vini address :${vini.address}`
+  );
+  console.log(
+    `Marketplace address :${marketplace.address}`
   );
 }
 
