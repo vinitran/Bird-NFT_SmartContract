@@ -8,48 +8,48 @@ const toWei = (value) => {
   return ethers.utils.parseUnits(value.toString(), "ether");
 }
 
-// describe("token and NFT", async function () {
-//   let deployer, addr1, addr2, bird, marketplace
-//   let feePercent = 1
-//   let URI = "Sample URI"
+describe("token and NFT", async function () {
+  let deployer, addr1, addr2, bird, marketplace
+  let feePercent = 1
+  let URI = "Sample URI"
 
-//   beforeEach(async function () {
-//     const BIRD = await ethers.getContractFactory("Bird");
-//     const VINI = await ethers.getContractFactory("VINI");
-//     [deployer, addr1, addr2] = await ethers.getSigners();
-//     bird = await BIRD.deploy();
-//     vini = await VINI.deploy();
-//   });
-//   describe("Deployment", function () {
-//     it("Track name and symbol of the token", async function () {
-//       expect(await vini.name()).to.equal("Vini")
-//       expect(await vini.symbol()).to.equal("VINI")
-//     });
+  beforeEach(async function () {
+    const BIRD = await ethers.getContractFactory("Bird");
+    const VINI = await ethers.getContractFactory("VINI");
+    [deployer, addr1, addr2] = await ethers.getSigners();
+    bird = await BIRD.deploy();
+    vini = await VINI.deploy();
+  });
+  describe("Deployment", function () {
+    it("Track name and symbol of the token", async function () {
+      expect(await vini.name()).to.equal("Vini")
+      expect(await vini.symbol()).to.equal("VINI")
+    });
 
-//     it("Mint and check the token", async function () {
-//       expect(fromWei( await vini.totalSupply())).to.equal("1000000.0")
-//       expect(fromWei( await vini.balanceOf(deployer.address))).to.equal("1000000.0")
-//       await vini.connect(addr1).mint(toWei(10));
-//       expect(fromWei( await vini.balanceOf(addr1.address))).to.equal("10.0")
-//     });
+    it("Mint and check the token", async function () {
+      expect(fromWei( await vini.totalSupply())).to.equal("1000000.0")
+      expect(fromWei( await vini.balanceOf(deployer.address))).to.equal("1000000.0")
+      await vini.connect(addr1).mint(toWei(10));
+      expect(fromWei( await vini.balanceOf(addr1.address))).to.equal("10.0")
+    });
 
-//     it("Track name and symbol of the NFT collection", async function () {
-//       expect(await bird.name()).to.equal("Flappy Bird")
-//       expect(await bird.symbol()).to.equal("FBIRD")
-//     });
+    it("Track name and symbol of the NFT collection", async function () {
+      expect(await bird.name()).to.equal("Flappy Bird")
+      expect(await bird.symbol()).to.equal("FBIRD")
+    });
 
-//     it("Mint NFT and check", async function () {
-//       await bird.connect(addr1).mint(URI);
-//       expect(await bird.tokenCount()).to.equal(1);
-//       expect(await bird.balanceOf(addr1.address)).to.equal(1);
-//       expect(await bird.tokenURI(1)).to.equal(URI);
-//       await bird.connect(addr1).mint(URI);
-//       expect(await bird.tokenCount()).to.equal(2);
-//       expect(await bird.balanceOf(addr1.address)).to.equal(2);
-//       expect(await bird.tokenURI(1)).to.equal(URI);
-//     });
-//   });
-// });
+    it("Mint NFT and check", async function () {
+      await bird.connect(addr1).mint(URI);
+      expect(await bird.tokenCount()).to.equal(1);
+      expect(await bird.balanceOf(addr1.address)).to.equal(1);
+      expect(await bird.tokenURI(1)).to.equal(URI);
+      await bird.connect(addr1).mint(URI);
+      expect(await bird.tokenCount()).to.equal(2);
+      expect(await bird.balanceOf(addr1.address)).to.equal(2);
+      expect(await bird.tokenURI(1)).to.equal(URI);
+    });
+  });
+});
 
 
 describe("Marketplace", async function () {
